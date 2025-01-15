@@ -19,3 +19,6 @@ Online🌐:   Alternatively, can be loaded via the interactive playground at htt
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These notebooks explore the SIR model, the SIRS model, and the stochastic SIR model.
 
+*Week 2:* file: **ExtendedEpiModels.py**
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These notebooks explore the SEIR model, and the SEIaIsRD model (incorporating asymptomatic infections).
