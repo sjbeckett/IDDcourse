@@ -23,7 +23,7 @@ def _():
 
         Do not hesitate to ask Stephen and Gabi questions, we do not want you to get stuck. 🧗🚧🙋
 
-        There are 5 different exercises to work through in this interactive notebook. Enjoy!
+        There are 2 different model exercises to work through in this interactive notebook. Enjoy!
 
         ## About this notebook
         This notebook was designed and written using a marimo.io notebook which is coded in python - a general computing programming language. The bonus of marimo is that it can be used as an interactive notebook environment with reactivity! This means that we can use objects such as sliders to change input parameters, that will automatically update outputs - such as figures showing simulation data. This makes the notebook easy to use -- even without needing to learn computer programming! **Remember**, you can download images by right clicking on them, or finding the 'Export output as PNG' in the ... of the appropriate figure cell.
@@ -84,7 +84,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(SEIRmodel, nuslider, odeint, plt, t):
-    # Integrate the SIR equations over the time grid, t.
+    # Integrate the SEIR equations over the time grid, t.
     gamma = 1/(10 - nuslider.value)
 
     beta = 0.4
@@ -116,7 +116,7 @@ def _(mo):
         $$\mathcal{R}_0 = \frac{\beta}{\gamma}$$
         Another way of looking at this is how many infections are generated during the time an individual is infectious.
 
-        Here, in the SEIR model $\frac{1}{\gamma}$ still defines the average time an individual is infectious; and infectious individuals still transmit at rate $\beta$. Hence, the same definition of $\mathcal{R}_0$ applies! Later, we will look at scenarios with different basic reproduction numbers.    
+        Here, in the SEIR model $\Large \frac{\large 1}{\large \gamma}$ still defines the average time an individual is infectious; and infectious individuals still transmit at rate $\beta$. Hence, the same definition of $\mathcal{R}_0$ applies! Later, we will look at scenarios with different basic reproduction numbers.    
         """
     ).callout("info")
                     })
@@ -163,7 +163,7 @@ def _():
     return (AsymptomaticModel,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(
          f"""
@@ -293,7 +293,7 @@ def _(mo):
     return delta_slide, loglin
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(D, E, Ia, Is, R, S, loglin, plt, t):
     plt.figure(figsize=(8,4))
     plt.plot(t,S,label='S')
@@ -319,6 +319,8 @@ def _(mo):
         We now have the SEIaIsRD asymptomatic simulation running. This model has 6 disease states. Can you follow the dynamics? This can be quite tricky when many of the lines are close together -- go back up and see if looking at the dynamics on a logarithmic scale could be useful! How do the dynamics change as the level of transmission reduction by symptomatic individuals is altered?
 
         To take a deeper dive, in the below plots we evaluate how model behavior changes with uncertainty surrounding the fraction of infections that are asymptomatic. Each point in the below corresponds to the output from one SEIaIsRD simulation.
+
+        Note, **the y-axes are dynamic** in these plots - they respond to the range in the simulation data (which can change when you alter the interactive slider). Be careful to look at the quantitative numbers as well as the qualitative shapes in your comparisons.
         """
     ).callout("success")
     return
@@ -375,7 +377,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
@@ -383,14 +385,14 @@ def _(mo):
 
         **core message 1**: asymptomatic transmission can represent a double-edged sword -- each asymptomatic infection is mild and may not lead to severe consequences; but -- asymptomatic individuals may be more likely to transmit infection onwards as they are unaware they are infectious. At a population scale, many more infections can translate into an increase in the number of infections with more severe outcomes.
 
-        **core message 2**: this model represents two transmission pathways - there are two ways to be infecious: either symptomatically, or asymptomatically; and each route is characterised by its own parameters. This introduces a serious complication for our previous understanding of the basic reproduction number $\mathcal{R}_0.$ When more than one transmission route is avialable we have to consider how an infection following each route might contribute to generating new infections. In this model the reproduction numbers associated with an asymptomatic infection are $\large \mathcal{R}_a = \beta_a / \gamma_a$; and for symptomatic infection as: $\large \mathcal{R}_s = \beta_s / \gamma_s$. Putting this together in the full model above we recover the basic reproduction number for the SEIaIsRD model as: 
+        **core message 2**: this model represents two transmission pathways - there are two ways to be infecious: either symptomatically, or asymptomatically; and each route is characterised by its own parameters. This introduces a serious complication for our previous understanding of the basic reproduction number $\mathcal{R}_0.$ When more than one transmission route is available we have to consider how an infection following each route might contribute to generating new infections. In this model the reproduction numbers associated with an asymptomatic infection are $\large \mathcal{R}_a = \beta_a / \gamma_a$; and for symptomatic infection as: $\large \mathcal{R}_s = \beta_s / \gamma_s$. Putting this together in the full model above we recover the basic reproduction number for the SEIaIsRD model as: 
         $$\large \mathcal{R}_0 = p\mathcal{R}_a + (1-p)(1-\delta)\mathcal{R}_s.$$
         """
     ).callout("info")
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.accordion(
         {
@@ -398,7 +400,7 @@ def _(mo):
             This means we have:
             $${\Large \mathcal{R}_0 = 3p + 3(1-p)}$$
             This means that the expected new infections caused by asymptomatic individuals matches those by symptomatic individuals.
-            
+
             Further, as $p X + (1-p) X = X$ (when p is between 0 and 1), this result is insensitive to the fraction of new infections that are asymptomatic. With these particular choices of epidemic parameters then, regardless of the choice of p, the epidemic strength is the same, = 3.
 
             This explains why the above plot showing the proportion of cumulative infections appears flat with respect to p when $\delta = 0.25$. Each of these theoretical epidemics has the same strength, indicating the same number of people become infected, despite the differences in relative numbers flowing through each transmission route, and the consequent differing level of associated severity.
@@ -406,7 +408,7 @@ def _(mo):
             Note, this also indicates a critical threshold in the dynamics for $\delta$!"""),
             r"**Question 2.2:** Consider, how might $\delta$ act as a critical threshold?  (click for answer)" : mo.md(r"""
             **Note this is a long answer, and considers a lot of details.**.
-            
+
             When $\delta = 0.25$ contributions to $\mathcal{R}_0$ from the asymptomatic and symptomatic transmission routes are equal (see last question). When $\delta>0.25$ then those with symptomatic infections are taking more actions to reduce their transmission potential; and the contributions from asymptomatic transmission to generating new infections become larger than the corresponding contributions from symptomatic transmission. When $\delta>0.25$ an asymptomatic infection is expected to generate more new infections; whereas when $\delta<0.25$ a symptomatic infection is expected to generate more new infections. This does not mean this is a threshold for there being more asymptomatic infections than symptomatic infections though, which is still governed by the fraction p.
 
             Another threshold appears at $\delta=0.75$; this is where the contributions to new infections from symptomatic individuals $\Large (1-\delta)\mathcal{R}_s = 1$. When $\delta >=0.75$ then in an outbreak composed only of symptomatic infection (when p=0) the outbreak has an $\mathcal{R}_0 <1$ and the outbreak cannot take off. We can take this logic further!
@@ -422,13 +424,15 @@ def _(mo):
             What happens when $\delta =1$?
             $${\Large p > \frac{1}{3}}$$
             An outbreak will only occur when p>1/3. Check, does this match the simulation output above?        
-            """)
+            """),
+            r"**Question 2.3:** What happens to the SEIaIsRD model when p = 0?  (click for answer)" : mo.md(r"""
+            When p=1, all infections are asymptomatic and lead to recovery. With the model and parameters chosen here, this means that no infections go via the sympotmatic compartment, and there are no fatal infections. So, in this case when p=1, the SEIaIsRD model could be written as a SEIaR model, which has the same properties as the SEIR model.""")
         }
     )
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     ## **Note on the basic reproduction number:**
@@ -437,42 +441,41 @@ def _(mo):
 
     The basic reproduction number can also be more complicated when there are multiple ways to leave infected compartments. In all our modeling work so far, we have only considered the effects of a focal disease on population dynamics. What if we consider an additional term to account for all other types of mortality that might be occuring in a population (e.g., traffic accidents, stroke, etc.)? Considering the SEIR model framework, if we assume all-cause mortality is independent of disease status and occurs at rate m, and additionally consider a population birth rate r to balance mortality, we get this set of equations:
 
-    The SEIR model can be written as: 
+    The SEIR model with birth and all-cause mortality can be written as: 
     $$\begin{align}\frac{dS}{dt} =& r -\beta SI - mS \nonumber\\
     \frac{dE}{dt} =& \beta SI - \nu E - mE\nonumber\\
     \frac{dI}{dt} =& \nu E - \gamma I - mI\nonumber\\
     \frac{dR}{dt} =& \gamma I - mR \nonumber\end{align}$$
 
     Here, some individuals who are infected (move into E) die before they become infectious (I). Additionally, some individuals who are infectious (I) die before they recover. We have to account for these factors in our calculation of $\mathcal{R}_0$ - the average number of expected new infections caused by one infected individual in an otherwise susceptible population. Here:
-    $$\Large \mathcal{R}_0 = \overset{\large fraction\ going}{\overset{\large from\ E\rightarrow I}{\overbrace{(\frac{\nu}{\nu + m})}}}\quad.\quad\overset{\large average}{\overset{\large time\ infectious}{\overbrace{(\frac{1}{\gamma + m})}}}\beta.$$
+    $$\Large \mathcal{R}_0 = \overset{\large fraction\ going}{\overset{\large from\ E\rightarrow I}{\overbrace{(\frac{\nu}{\nu + m})}}}\quad.\quad\overset{\large average}{\overset{\large time\ infectious}{\overbrace{(\frac{1}{\gamma + m})}}}.\quad \overset{\large transmission}{\overset{\large rate}{\overbrace{\beta}}}.$$
 
     """).callout("info")
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(
         f"""
         # Fin. {mo.icon("fluent-emoji-flat:1st-place-medal")}
 
         You completed this interactive notebook exploring some additional epidemiology models {mo.icon("fluent-emoji-flat:clapping-hands")}. In total, you have examined:
-        
+
         * SIR model {mo.icon("fluent-emoji-flat:1st-place-medal")}
         * SIRS model {mo.icon("fluent-emoji-flat:1st-place-medal")}
         * stochastic SIR model {mo.icon("fluent-emoji-flat:1st-place-medal")}
         * SEIR model {mo.icon("fluent-emoji-flat:1st-place-medal")}
         * SEIaIsRD model {mo.icon("fluent-emoji-flat:1st-place-medal")}
 
-        You should have gained an appreciation for the richness of dynamics that even these simple epidemiology models can display; how considering the basic and effective reproduction number can help explain the observed dynamics in large populations - and can be helpful to think about how/what interventions might be useful. The utility of these simple models is that we can analyze them and isolate how different flows/interactions might change population-level disease dynamics. This becomes much harder as the system we are considering, and the number of elements and flows, grow. While we have considered several different models, these models do not reflect the full suite of modeling for all infectious disease. Different diseases, and different disease contexts/interventions, have differing characteristics which means they may need particular flows and elements that have not been showcased here. Additionally, there are additional modeling techniques (e.g. network models, agent based models) we did not discuss that could be adopted to model infectious disease spread.
+        You should have gained an understanding of some of the principles behind designing epidemiological models, an appreciation for the richness of dynamics that even these simple epidemiology models can display; how considering the basic and effective reproduction number can help explain the observed dynamics in large populations - and can be helpful to think about how/what interventions might be useful. The utility of these simple models is that we can analyze them and isolate how different flows/interactions might change population-level disease dynamics. This becomes much harder as the system we are considering, and the number of elements and flows, grow. While we have considered several different models, these models do not reflect the full suite of modeling for all infectious disease. Different diseases, and different disease contexts/interventions, have differing characteristics which means they may need particular flows and elements that have not been showcased here. Additionally, there are additional modeling techniques (e.g. network models, agent based models) we did not discuss that could be adopted to model infectious disease spread.
 
         If you have extra time, consider investigating the interactive dashboard corresponding to the modeling that Dr. Mallory Harris presented on Tuesday: 
-        
+
         [http://mallory-harris.shinyapps.io/divided-disease](http://mallory-harris.shinyapps.io/divided-disease)
-        
+
         """
     )
-
     return
 
 
