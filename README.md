@@ -22,3 +22,7 @@ Online🌐:   Alternatively, can be loaded via the interactive playground at htt
 *Week 2:* file: **ExtendedEpiModels.py**
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These notebooks explore the SEIR model, and the SEIaIsRD model (incorporating asymptomatic infections).
+
+*Week 3:* file: **InterventionNotebook.py**
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These notebooks explore the SEIRD model, and using it to drive and compare outbreak intervention scenarios.
