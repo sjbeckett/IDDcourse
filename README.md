@@ -15,7 +15,7 @@ Offline🖥️:  Requires Python: https://www.python.org/. Can be used after ins
 Online🌐:   Alternatively, can be loaded via the interactive playground at https://marimo.io.
 
 ## Notebook summary
-*Week 1:* file: **EpiNotebook.jl (will be uploaded later) / EpiNotebook.py**
+*Week 1:* file: **EpiNotebook.jl / EpiNotebook.py**
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These notebooks explore the SIR model, the SIRS model, and the stochastic SIR model.
 
