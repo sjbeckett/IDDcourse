@@ -34,7 +34,7 @@ Recall, the key point in working through this interactive notebook is not in lea
 
 ## About this notebook
 
-This notebook was designed and written using a marimo.io notebook which is coded in python - a general computing programming language. The bonus of marimo is that it can be used as an interactive notebook environment with reactivity! This means that we can use objects such as sliders to change input parameters, that will automatically update outputs - such as figures showing simulation data. This makes the notebook easy to use -- even without needing to learn computer programming! **Remember**, you can open images in a new tab by right clicking on them, which will allow you to screenshot them for later.
+This notebook was designed and written using a Pluto.jl notebook which is coded in Julia - a general computing programming language. The bonus of Pluto is that it can be used as an interactive notebook environment with reactivity! This means that we can use objects such as sliders to change input parameters, that will automatically update outputs - such as figures showing simulation data. This makes the notebook easy to use -- even without needing to learn computer programming! **Remember**, you can open images in a new tab by right clicking on them, which will allow you to screenshot them for later.
 """
 
 # ╔═╡ 3f5fd354-63ca-43fc-9622-f26a3e390d64
