@@ -450,7 +450,7 @@ def _(D00, DI1, Ea, Ia, N, Ra, Sa, plt, t00, tI1, ta, tc):
     plt.plot(tI1,DI1,label='D')
     plt.scatter(t00[0:28],D00[0:28],label='D obs')
     plt.xlabel('Time (days)')
-    plt.ylabel('Cumulative deaths')
+    plt.ylabel('Population')
     plt.xlim([0,100])
     plt.ylim([0.00001,max(Sa)+10])
     #plt.yscale("log")
