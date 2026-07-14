@@ -20,22 +20,22 @@ def _(mo):
         r"""
         # Simple intervention model
         #### Dr. Stephen Beckett, University of Maryland (beckett@umd.edu)
-                **Welcome** to the simulation exercise section utilized in slides for Day 5 of BSCI439C/BIOL708F: "Infectious disease dynamics: a systems approach".
+        **Welcome** to the simulation exercise section utilized in slides for Day 5 of BSCI439C/BIOL708F: "Infectious disease dynamics: a systems approach".
 
-                Recall, the key point in working through this interactive notebook is not in learning how to code, which is challenging and goes beyond what we offer in this course, but to see how concepts we have discussed can be translated into models and simulations -- and the types of characteristics and dynamical outcomes these models describe.
+        Recall, the key point in working through this interactive notebook is not in learning how to code, which is challenging and goes beyond what we offer in this course, but to see how concepts we have discussed can be translated into models and simulations -- and the types of characteristics and dynamical outcomes these models describe.
 
         ## About this notebook
-                This notebook was designed and written using a marimo.io notebook which is coded in python - a general computing programming language. The bonus of marimo is that it can be used as an interactive notebook environment with reactivity! This means that we can use objects such as sliders to change input parameters, that will automatically update outputs - such as figures showing simulation data. This makes the notebook easy to use -- even without needing to learn computer programming! **Remember**, you can download images by right clicking on them, or finding the 'Export output as PNG' in the ... of the appropriate figure cell.
+        This notebook was designed and written using a marimo.io notebook which is coded in python - a general computing programming language. The bonus of marimo is that it can be used as an interactive notebook environment with reactivity! This means that we can use objects such as sliders to change input parameters, that will automatically update outputs - such as figures showing simulation data. This makes the notebook easy to use -- even without needing to learn computer programming! **Remember**, you can download images by right clicking on them, or finding the 'Export output as PNG' in the ... of the appropriate figure cell.
 
         ## About this modeling exercise
 
-                Today, we will use a model which is a slight modification of those we have seen previously - the SEIRD model. This model includes two infection stages, those who are exposed to a disease $E$ but not yet infectious, and those who are infectious $I$. Here, individuals are infectious for an average duration (1/$\gamma$) with a fraction $f$ dying and a fraction $(1-f)$ recovering from the infection, such that $f$ reflects the **infection fatality ratio** - the number of fatalities per infection. Today we will use a model formulation that scales such that our state variables are in units of people, rather than fractions of the population. The model is as follows:
+        Today, we will use a model which is a slight modification of those we have seen previously - the SEIRD model. This model includes two infection stages, those who are exposed to a disease $E$ but not yet infectious, and those who are infectious $I$. Here, individuals are infectious for an average duration (1/$\gamma$) with a fraction $f$ dying and a fraction $(1-f)$ recovering from the infection, such that $f$ reflects the **infection fatality ratio** - the number of fatalities per infection. Today we will use a model formulation that scales such that our state variables are in units of people, rather than fractions of the population. The model is as follows:
 
-                $$\begin{align}\frac{dS}{dt} =& -\beta \frac{SI}{N} \nonumber\\
-                \frac{dE}{dt} =& \beta \frac{SI}{N} - \nu E \nonumber\\
-                \frac{dI}{dt} =& \nu E - \gamma I \nonumber\\
-                \frac{dR}{dt} =& (1-f)\gamma I\nonumber\\
-                \frac{dD}{dt} =& f\gamma I.\nonumber\end{align}$$
+        $$\begin{align}\frac{dS}{dt} =& -\beta \frac{SI}{N} \nonumber\\
+        \frac{dE}{dt} =& \beta \frac{SI}{N} - \nu E \nonumber\\
+        \frac{dI}{dt} =& \nu E - \gamma I \nonumber\\
+        \frac{dR}{dt} =& (1-f)\gamma I\nonumber\\
+        \frac{dD}{dt} =& f\gamma I.\nonumber\end{align}$$
 
         We will assume a population of $N=100,000$ people, one of whom is initially exposed to the infectious disease.
 
