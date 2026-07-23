@@ -1,0 +1,5 @@
+OrdinaryDiffEq v6.90.1
+Plots v1.40.9
+PlutoTeachingTools v0.3.1
+PlutoUI v0.7.61
+Pkg v1.11.0
