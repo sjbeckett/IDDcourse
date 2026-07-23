@@ -29,5 +29,7 @@ Online🌐:   Alternatively, can be loaded via the interactive playground at htt
 
 ## Version notes
 Software is continually revised and updated. For longevity, we note software and package versions at a stage where these notebooks have been run. This could be useful for setting up these files through containerization in the future.
+
 .py files last checked with Python 3.14.2. Package versions are listed in python_packges.txt
+
 .jl files last checked with Julia 1.11.5. Package versions are listed in julia_packages.txt
